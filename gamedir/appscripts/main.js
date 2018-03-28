@@ -36,6 +36,12 @@ require(
     var radius;
     var cookiesEaten;
 
+    var soundSources = [
+      "sounds/Is it cookie.mp3",
+      "sounds/Its a cookie.mp3",
+      "sounds/Me want cookie.mp3"
+    ];
+
     //////////////////////////////////////////////////
 
     // function to generate a random color string
@@ -52,6 +58,12 @@ require(
       return start + Math.floor(Math.random() * range);
     };
 
+    // function to play a random sound
+    var playSound = function () {
+      var src = soundSources[randomInt(0, soundSources.length - 1)];
+      new Audio(src).play();
+    };
+
     // function to create a cookie
     var createCookie = function (radius) {
       var randomXpos = randomInt(radius, pWidth - radius);
@@ -65,6 +77,8 @@ require(
       });
 
       cookie.addEventListener("click", function (event) {
+        playSound();
+
         cookieImg.remove();
         cookie.remove();
         cookiesEaten++;
