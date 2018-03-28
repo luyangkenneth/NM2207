@@ -30,6 +30,7 @@ require(
 
     //////////////////////////////////////////////////
 
+    var cookieImg;
     var cookie;
     var difficulty;
     var radius;
@@ -55,12 +56,19 @@ require(
     var createCookie = function (radius) {
       var randomXpos = randomInt(radius, pWidth - radius);
       var randomYpos = randomInt(radius, pHeight - radius);
+
+      cookieImg = paper.image("images/cookie.png", randomXpos - radius, randomYpos - radius, radius * 2, radius * 2);
       cookie = paper.circle(randomXpos, randomYpos, radius);
-      cookie.attr("fill", randomColorString());
+      cookie.attr({
+        "fill": "#fff",
+        "fill-opacity": 0
+      });
 
       cookie.addEventListener("click", function (event) {
+        cookieImg.remove();
         cookie.remove();
         cookiesEaten++;
+
         createCookie(radius);
       });
     };
