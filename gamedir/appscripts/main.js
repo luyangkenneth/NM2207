@@ -44,14 +44,6 @@ require(
 
     //////////////////////////////////////////////////
 
-    // function to generate a random color string
-    var randomColorString = function () {
-      var h = randomInt(0, 360);
-      var s = randomInt(30, 100);
-      var l = randomInt(30, 100);
-      return Raphael.hsl(h, s, l);
-    };
-
     // function to generate random integer between a range
     var randomInt = function (start, end) {
       var range = end - start + 1;
