@@ -87,7 +87,7 @@ require(
       var validOptions = ["1", "2", "3"];
       var validRadii = [200, 80, 20];
 
-      difficulty = prompt("Eat as many cookies as you can! 🍪\nChoose 1 for Easy, 2 for Medium, and 3 for Hard.\nPress cancel to quit.");
+      difficulty = prompt("Eat as many cookies as you can! 🍪\nChoose 1 for Easy, 2 for Medium, and 3 for Hard.\n\nPress cancel to quit.");
 
       if (difficulty === null) {
         return null;
@@ -101,8 +101,11 @@ require(
       }
     };
 
+    //////////////////////////////////////////////////
+
     // function for game start
-    var gameStart = function () {
+    // !! this is a global !!
+    gameStart = function () {
       if (chooseDifficulty() === null) {
         return;
       }
@@ -128,13 +131,10 @@ require(
 
     // function for game over
     var gameOver = function () {
+      cookieImg.remove();
       cookie.remove();
       alert("Game Over! You ate " + cookiesEaten + " cookies! 🍪");
-      countdown.innerHTML = "<button onclick=\"javascript:location.reload();\">Play again!</button>";
+      countdown.innerHTML = "<button onclick=\"javascript:gameStart();\">Play again!</button>";
     };
-
-    //////////////////////////////////////////////////
-
-    gameStart();
   }
 );
