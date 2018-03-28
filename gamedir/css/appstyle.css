@@ -14,6 +14,12 @@ body {
   min-width: fit-content;
 }
 
+/* styling for countdown */
+#countdown {
+  font: 32px Helvetica;
+  margin-left: 40px;
+}
+
 /* styling for header */
 #header {
   border-radius: 7pt;
@@ -21,7 +27,7 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
   margin: 5px;
   padding: 10px;
