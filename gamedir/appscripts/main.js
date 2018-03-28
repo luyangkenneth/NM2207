@@ -42,6 +42,9 @@ require(
       "sounds/Me want cookie.mp3"
     ];
 
+    var timeLeft;
+    var countdown = document.getElementById("countdown");
+
     //////////////////////////////////////////////////
 
     // function to generate random integer between a range
@@ -104,11 +107,23 @@ require(
         return;
       }
 
-      var durationInSeconds = 5;
-      setTimeout(gameOver, 1000 * durationInSeconds);
-
       cookiesEaten = 0;
       createCookie(radius);
+
+      timeLeft = 10;
+      updateCountdown();
+    };
+
+    // function to update countdown timer
+    var updateCountdown = function () {
+      countdown.innerText = "Time left: " + timeLeft + " s";
+
+      if (timeLeft <= 0) {
+        gameOver();
+      } else {
+        timeLeft--;
+        setTimeout(updateCountdown, 1000);
+      }
     };
 
     // function for game over
