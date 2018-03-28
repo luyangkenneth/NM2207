@@ -130,6 +130,7 @@ require(
     var gameOver = function () {
       cookie.remove();
       alert("Game Over! You ate " + cookiesEaten + " cookies! 🍪");
+      countdown.innerHTML = "<button onclick=\"javascript:location.reload();\">Play again!</button>";
     };
 
     //////////////////////////////////////////////////

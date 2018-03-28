@@ -20,6 +20,11 @@ body {
   margin-left: 40px;
 }
 
+#countdown > button {
+  font: 28px Helvetica;
+  border-radius: 10pt;
+}
+
 /* styling for header */
 #header {
   border-radius: 7pt;
