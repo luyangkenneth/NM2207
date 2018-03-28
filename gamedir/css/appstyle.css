@@ -1,0 +1,47 @@
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+body {
+  font: 16px Helvetica;
+  background-color: grey;
+  min-width: fit-content;
+}
+
+/* styling for header */
+#header {
+  border-radius: 7pt;
+  background: #ffeebb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  margin: 5px;
+  padding: 10px;
+}
+
+/* styling for main */
+#main {
+  border-radius: 7pt;
+  background: #444499;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 5px;
+  padding: 30px;
+}
+
+/* styling for centerDiv */
+#main > #centerDiv {
+  flex: 0 0 800px;
+  height: 600px;
+}
