@@ -91,6 +91,7 @@ require(
       } else if (validOptions.includes(difficulty)) {
         // set the radius
         radius = validRadii[parseInt(difficulty) - 1];
+        return true;
       } else {
         // prompt the player again
         return chooseDifficulty();
@@ -99,7 +100,6 @@ require(
 
     // function for game start
     var gameStart = function () {
-      // alert("");
       if (chooseDifficulty() === null) {
         return;
       }
