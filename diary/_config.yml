@@ -16,8 +16,8 @@
 title: Kenneth's Diary
 description: >- # this means to ignore newlines until "baseurl:"
   Reflections and progress updates on the NM2207 final project.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/A0124007X/diarydir" # the subpath of your site, e.g. /blog
+url: "http://nm2207.org" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown

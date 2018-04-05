@@ -7,7 +7,7 @@ As I think about how I should approach this final project, I feel that it will b
 
 Most of the assignments thus far have involved a main event loop which controls movement and positioning, which I think sets up a great foundation for me to dive into designing and making a full-fledged game.
 
-![Space Invaders](/images/space-invaders.png)
+![Space Invaders]({{ site.baseurl }}/images/space-invaders.png)
 
 _Space Invaders, a 2D shooter game first released in 1978. [Source](https://www.muralswallpaper.com/app/uploads/space-invaders-retro-plain.jpg)_
 
