@@ -85,6 +85,20 @@ const createSpaceship = () => {
 };
 
 const loop = () => {
+  // Set rotate_amount
+  let rotate_amount = 0;
+  if (keys.right) {
+    rotate_amount = 3;
+  } else if (keys.left) {
+    rotate_amount = -3;
+  }
+  spaceship.rotation += rotate_amount + 360
+  spaceship.rotation %= 360;
+
+  // Rotate spaceship
+  spaceship.rotate(rotate_amount);
+
+  // Set velocity
   if (keys.up) {
     spaceship.yrate -= 0.2;
   } else if (keys.down) {
@@ -96,24 +110,15 @@ const loop = () => {
     spaceship.yrate = 0;
   }
 
-  let rotate_amount = 0;
-  if (keys.right) {
-    rotate_amount = 3;
-  } else if (keys.left) {
-    rotate_amount = -3;
-  }
-  spaceship.rotation += rotate_amount + 360
-  spaceship.rotation %= 360;
-
-  //////////
-
+  // Move spaceship
   spaceship.xpos += spaceship.xrate;
   spaceship.ypos += spaceship.yrate;
   spaceship.attr({
     cx: spaceship.xpos,
     cy: spaceship.ypos,
   });
-  spaceship.rotate(rotate_amount);
+
+  //////////
 
   setTimeout(loop, 10);
 };
