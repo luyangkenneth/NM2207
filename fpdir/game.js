@@ -78,7 +78,7 @@ const createSpaceship = () => {
   spaceship.rotation = 0;
 
   spaceship.attr({
-    "fill": "90-#fff:0-#00f:100",
+    "fill": "90-#ddf:0-#09f:100",
     // "fill-opacity": 0,
     "stroke-width": 0,
   });
