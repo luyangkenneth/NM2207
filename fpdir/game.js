@@ -26,6 +26,7 @@ let spaceship;
 
 const run = () => {
   setup();
+  loop();
 };
 
 const setup = () => {
@@ -65,9 +66,27 @@ const createSpaceship = () => {
 
   spaceship.xpos = halfWidth;
   spaceship.ypos = halfHeight;
+  spaceship.rotation = 0;
+
   spaceship.attr({
     "fill": "90-#fff:0-#00f:100",
     // "fill-opacity": 0,
     "stroke-width": 0,
   });
+};
+
+const loop = () => {
+  let rotate_amount = 0;
+  if (keys.right) {
+    rotate_amount = 3;
+  } else if (keys.left) {
+    rotate_amount = -3;
+  }
+  spaceship.rotation += rotate_amount + 360
+  spaceship.rotation %= 360;
+  console.log(spaceship.rotation);
+
+  spaceship.rotate(rotate_amount);
+
+  setTimeout(loop, 10);
 };
