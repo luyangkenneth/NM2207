@@ -25,7 +25,7 @@ After playing the [Asteroids game][game] online and experiencing its mechanics, 
 
 - **Sounds**: Background music, bullet firing, asteroid collision / destruction.
 
-## Extension
+### Extension
 
 - **Advanced spaceship movement**: How do I get the spaceship to accelerate and decelerate, based on its rotation and thrust?
 
