@@ -16,6 +16,7 @@ rect.attr({
 
 const keys = {
   up: false,
+  down: false,
   left: false,
   right: false,
 };
@@ -35,6 +36,9 @@ const setup = () => {
       case 'ArrowUp':
         keys.up = true;
         break;
+      case 'ArrowDown':
+        keys.down = true;
+        break;
       case 'ArrowLeft':
         keys.left = true;
         break;
@@ -48,6 +52,9 @@ const setup = () => {
     switch (event.key) {
       case 'ArrowUp':
         keys.up = false;
+        break;
+      case 'ArrowDown':
+        keys.down = false;
         break;
       case 'ArrowLeft':
         keys.left = false;
@@ -66,6 +73,8 @@ const createSpaceship = () => {
 
   spaceship.xpos = halfWidth;
   spaceship.ypos = halfHeight;
+  spaceship.xrate = 0;
+  spaceship.yrate = 0;
   spaceship.rotation = 0;
 
   spaceship.attr({
@@ -76,6 +85,17 @@ const createSpaceship = () => {
 };
 
 const loop = () => {
+  if (keys.up) {
+    spaceship.yrate -= 0.2;
+  } else if (keys.down) {
+    spaceship.yrate += 0.15;
+  } else {
+    spaceship.yrate += 0.03;
+  }
+  if (spaceship.yrate > 0) {
+    spaceship.yrate = 0;
+  }
+
   let rotate_amount = 0;
   if (keys.right) {
     rotate_amount = 3;
@@ -84,8 +104,15 @@ const loop = () => {
   }
   spaceship.rotation += rotate_amount + 360
   spaceship.rotation %= 360;
-  console.log(spaceship.rotation);
 
+  //////////
+
+  spaceship.xpos += spaceship.xrate;
+  spaceship.ypos += spaceship.yrate;
+  spaceship.attr({
+    cx: spaceship.xpos,
+    cy: spaceship.ypos,
+  });
   spaceship.rotate(rotate_amount);
 
   setTimeout(loop, 10);
