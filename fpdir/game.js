@@ -1,3 +1,19 @@
+const header = document.getElementById('header');
+const main = document.getElementById('main');
+
+const paper = new Raphael(main);
+const pWidth = paper.width;
+const pHeight = paper.height;
+const halfWidth = pWidth / 2;
+const halfHeight = pHeight / 2;
+
+const rect = paper.rect(0, 0, pWidth, pHeight);
+rect.attr({
+  "fill": "#000",
+  "fill-opacity": 0,
+  "stroke-width": 0,
+});
+
 const keys = {
   up: false,
   left: false,
@@ -37,19 +53,5 @@ const setup = () => {
         keys.right = false;
         break;
     }
-  });
-
-  const header = document.getElementById('header');
-  const main = document.getElementById('main');
-
-  const paper = new Raphael(main);
-  const pWidth = paper.width;
-  const pHeight = paper.height;
-
-  const rect = paper.rect(0, 0, pWidth, pHeight);
-  rect.attr({
-    "fill": "#000",
-    "fill-opacity": 0,
-    "stroke-width": 0,
   });
 };
