@@ -1,0 +1,41 @@
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  background-color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 800px; /* width */
+  padding-top: 50px;
+}
+
+#header {
+  background-color: #999;
+  flex: 0 0 50px; /* height */
+  width: 100%;
+}
+
+#main {
+  background-color: #000;
+  flex: 0 0 600px; /* height */
+  width: 100%;
+}
