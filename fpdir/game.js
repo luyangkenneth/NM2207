@@ -20,6 +20,8 @@ const keys = {
   right: false,
 };
 
+let spaceship;
+
 //////////////////////////////////////////////////
 
 const run = () => {
@@ -53,5 +55,18 @@ const setup = () => {
         keys.right = false;
         break;
     }
+  });
+
+  createSpaceship();
+};
+
+const createSpaceship = () => {
+  spaceship = paper.circle(halfWidth, halfHeight, 20);
+  spaceship.xpos = halfWidth;
+  spaceship.ypos = halfHeight;
+  spaceship.attr({
+    "fill": "#FFF",
+    // "fill-opacity": 0,
+    "stroke-width": 0,
   });
 };
