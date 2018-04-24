@@ -61,11 +61,12 @@ const setup = () => {
 };
 
 const createSpaceship = () => {
-  spaceship = paper.circle(halfWidth, halfHeight, 20);
+  spaceship = paper.ellipse(halfWidth, halfHeight, 15, 20);
+
   spaceship.xpos = halfWidth;
   spaceship.ypos = halfHeight;
   spaceship.attr({
-    "fill": "#FFF",
+    "fill": "90-#fff:0-#00f:100",
     // "fill-opacity": 0,
     "stroke-width": 0,
   });
