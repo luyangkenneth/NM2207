@@ -49,6 +49,8 @@ const asteroidStats = {
 };
 
 const bullets = [];
+const bulletRadius = 2;
+const bulletSpeed = 7;
 
 //////////////////////////////////////////////////
 
@@ -165,11 +167,34 @@ const destroyAsteroid = (asteroid) => {
 };
 
 const fireBullet = () => {
+  const spaceshipCenter = getCenter(spaceship);
+  const bullet = paper.circle(spaceshipCenter.x, spaceshipCenter.y, bulletRadius);
+
+  // TODO: determine bullet angle based on spaceship rotation, then split into xrate and yrate from there
+  bullet.xrate = bulletSpeed;
+  bullet.yrate = bulletSpeed;
+
+  bullet.attr({
+    "fill": "#f00",
+    "stroke-width": 0,
+  });
+
+  bullets.push(bullet);
+
   // TODO: setTimeout for bullet expiration
 };
 
-const expireBullet = () => {
-  // TODO
+const expireBullet = (bullet) => {
+  const index = bullets.indexOf(bullet);
+  if (index < 0) {
+    return;
+  }
+
+  // Remove from array
+  bullets.splice(index, 1);
+
+  // Remove from paper
+  bullet.remove();
 };
 
 //////////////////////////////////////////////////
@@ -214,13 +239,30 @@ const loop = () => {
     wrap(asteroid);
 
     // Check collision with spaceship
-    if (checkCollision(spaceship, spaceshipLength, asteroid, asteroidStats[asteroid.size].radius)) {
+    const asteroidRadius = asteroidStats[asteroid.size].radius;
+    if (checkCollision(spaceship, spaceshipLength, asteroid, asteroidRadius)) {
       // TODO: spaceship should be destroyed
       destroyAsteroid(asteroid);
     }
+  });
 
-    // Check collision with bullets
-    // TODO
+  //////////
+
+  // Handle bullets
+  bullets.forEach((bullet) => {
+    bullet.translate(bullet.xrate, bullet.yrate);
+    wrap(bullet);
+
+    // Check collision with asteroids
+    for (let i = 0; i < asteroids.length; i++) {
+      const asteroid = asteroids[i];
+      const asteroidRadius = asteroidStats[asteroid.size].radius;
+      if (checkCollision(bullet, bulletRadius, asteroid, asteroidRadius)) {
+        expireBullet(bullet);
+        destroyAsteroid(asteroid);
+        break;
+      }
+    };
   });
 
   //////////
