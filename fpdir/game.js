@@ -23,6 +23,10 @@ const keys = {
   right: false,
 };
 
+const sounds = {
+  laser: "assets/sounds/laser.wav",
+};
+
 let spaceship;
 const spaceshipLength = 18;
 const spaceshipWidth = 13;
@@ -195,7 +199,7 @@ const fireBullet = () => {
 
   bullets.add(bullet);
 
-  // TODO: add sound for firing
+  new Audio(sounds.laser).play();
 
   setTimeout(() => expireBullet(bullet), bulletExpiration);
 };
