@@ -1,3 +1,5 @@
+//////////////////////////////////////////////////
+
 const header = document.getElementById('header');
 const main = document.getElementById('main');
 
@@ -77,24 +79,21 @@ const createSpaceship = () => {
 
   spaceship.attr({
     "fill": "90-#ddf:0-#09f:100",
-    // "fill-opacity": 0,
     "stroke-width": 0,
   });
 };
 
 const loop = () => {
-  // Set rotate_amount
-  let rotate_amount = 0;
-  if (keys.right) {
-    rotate_amount = 3;
-  } else if (keys.left) {
-    rotate_amount = -3;
-  }
-  spaceship.rotation += rotate_amount + 360
-  spaceship.rotation %= 360;
-
   // Rotate spaceship
-  spaceship.rotate(rotate_amount);
+  let rotateAmount = 0;
+  if (keys.right) {
+    rotateAmount = 3;
+  } else if (keys.left) {
+    rotateAmount = -3;
+  }
+  spaceship.rotation += rotateAmount + 360
+  spaceship.rotation %= 360;
+  spaceship.rotate(rotateAmount);
 
   // Set velocity
   if (keys.up) {
