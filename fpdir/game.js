@@ -24,7 +24,15 @@ const keys = {
 };
 
 let spaceship;
+
 const asteroids = [];
+const asteroidStats = {
+  large: {
+    radius: 60,
+    minSpeed: 0.5,
+    maxSpeed: 1.2,
+  },
+};
 
 //////////////////////////////////////////////////
 
@@ -71,7 +79,7 @@ const setup = () => {
   createSpaceship();
 
   for (let i = 0; i < 3; i++) {
-    createAsteroid();
+    createAsteroid('large');
   }
 };
 
@@ -88,12 +96,13 @@ const createSpaceship = () => {
   });
 };
 
-const createAsteroid = () => {
-  const asteroid = paper.circle(halfWidth, halfHeight, 60);
+const createAsteroid = (size) => {
+  const stats = asteroidStats[size];
+  const asteroid = paper.circle(halfWidth, halfHeight, stats.radius);
   asteroids.push(asteroid);
 
-  asteroid.xrate = randomFlip(randomFloat(0.5, 1.2));
-  asteroid.yrate = randomFlip(randomFloat(0.5, 1.2));
+  asteroid.xrate = randomFlip(randomFloat(stats.minSpeed, stats.maxSpeed));
+  asteroid.yrate = randomFlip(randomFloat(stats.minSpeed, stats.maxSpeed));
 
   asteroid.attr({
     "fill": "#ccc",
