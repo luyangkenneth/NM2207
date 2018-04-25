@@ -66,6 +66,7 @@ body {
   font-size: 24px;
 }
 
-#playAgain:hover {
+#playAgain > a:hover {
   color: #ccc;
+  cursor: pointer;
 }
