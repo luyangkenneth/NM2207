@@ -151,6 +151,26 @@ const wrap = (obj) => {
   const bbox = obj.getBBox();
   const objWidth = bbox.x2 - bbox.x;
   const objHeight = bbox.y2 - bbox.y;
+  let xTranslate = pWidth + objWidth;
+  let yTranslate = pHeight + objHeight;
+
+  if (obj.rotation === undefined) {
+    // left and right edges
+    if (bbox.x2 < 0) {
+      obj.translate(xTranslate, 0);
+    } else if (bbox.x > pWidth) {
+      obj.translate(-xTranslate, 0);
+    }
+
+    // top and bottom edges
+    if (bbox.y2 < 0) {
+      obj.translate(0, yTranslate);
+    } else if (bbox.y > pHeight) {
+      obj.translate(0, -yTranslate);
+    }
+
+    return;
+  }
 
   // left and right edges
   if (bbox.x2 < 0) {
