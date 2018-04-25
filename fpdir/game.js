@@ -65,7 +65,7 @@ const asteroidStats = {
 const bullets = new Set();
 const bulletRadius = 2;
 const bulletSpeed = 10;
-const bulletExpiration = 900;
+const bulletExpiration = 1200;
 const firingRate = 120;
 let timeLastFired;
 
