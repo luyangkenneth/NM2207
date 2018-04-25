@@ -142,6 +142,12 @@ const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
 };
 
 const destroyAsteroid = (asteroid) => {
+  const index = asteroids.indexOf(asteroid);
+  if (index < 0) {
+    return;
+  }
+
+  // Create smaller asteroids
   const center = getCenter(asteroid);
   if (asteroid.size === 'large') {
     repeat(3, () => createAsteroid('medium', center.x, center.y));
@@ -149,9 +155,10 @@ const destroyAsteroid = (asteroid) => {
     repeat(3, () => createAsteroid('small', center.x, center.y));
   }
 
-  const index = asteroids.indexOf(asteroid);
+  // Remove from array
   asteroids.splice(index, 1);
 
+  // Remove from paper
   asteroid.remove();
 
   // TODO: add animation and sound for destruction
