@@ -23,34 +23,41 @@ const keys = {
   right: false,
 };
 
-const spaceshipLength = 16;
-const spaceshipWidth = 12;
 let spaceship;
+const spaceshipLength = 18;
+const spaceshipWidth = 13;
+const spaceshipRotateSpeed = 4;
+const spaceshipMaxSpeed = 7;
+const spaceshipThrust = 0.2;
+const spaceshipBrake = 0.15;
+const spaceshipDrag = 0.03;
 
 const asteroids = [];
 const asteroidStats = {
   large: {
     radius: 60,
-    minSpeed: 0.3,
-    maxSpeed: 0.6,
+    minSpeed: 0.4,
+    maxSpeed: 0.8,
   },
 
   medium: {
-    radius: 40,
-    minSpeed: 0.6,
-    maxSpeed: 1.1,
+    radius: 35,
+    minSpeed: 0.8,
+    maxSpeed: 1.2,
   },
 
   small: {
-    radius: 20,
-    minSpeed: 0.9,
-    maxSpeed: 1.5,
+    radius: 15,
+    minSpeed: 1.2,
+    maxSpeed: 1.8,
   },
 };
 
 const bullets = new Set();
 const bulletRadius = 2;
-const bulletSpeed = 7;
+const bulletSpeed = 10;
+const bulletExpiration = 900;
+const firingRate = 120;
 let timeLastFired;
 
 //////////////////////////////////////////////////
@@ -103,7 +110,7 @@ const setup = () => {
 
   createSpaceship();
 
-  repeat(3, () => createAsteroid('large'));
+  repeat(4, () => createAsteroid('large'));
 };
 
 const createSpaceship = () => {
@@ -168,7 +175,7 @@ const destroyAsteroid = (asteroid) => {
 };
 
 const fireBullet = () => {
-  if (timeLastFired !== undefined && Date.now() - timeLastFired < 200) {
+  if (timeLastFired !== undefined && Date.now() - timeLastFired < firingRate) {
     return;
   }
   timeLastFired = Date.now();
@@ -190,7 +197,7 @@ const fireBullet = () => {
 
   // TODO: add sound for firing
 
-  setTimeout(() => expireBullet(bullet), 1200);
+  setTimeout(() => expireBullet(bullet), bulletExpiration);
 };
 
 const expireBullet = (bullet) => {
@@ -212,9 +219,9 @@ const loop = () => {
     // Rotate spaceship
     let rotateAmount = 0;
     if (keys.right) {
-      rotateAmount = 3;
+      rotateAmount = spaceshipRotateSpeed;
     } else if (keys.left) {
-      rotateAmount = -3;
+      rotateAmount = -spaceshipRotateSpeed;
     }
     spaceship.rotation += rotateAmount + 360
     spaceship.rotation %= 360;
@@ -222,16 +229,16 @@ const loop = () => {
 
     // Set velocity
     if (keys.up) {
-      spaceship.yrate -= 0.2;
+      spaceship.yrate -= spaceshipThrust;
     } else if (keys.down) {
-      spaceship.yrate += 0.15;
+      spaceship.yrate += spaceshipBrake;
     } else {
-      spaceship.yrate += 0.03;
+      spaceship.yrate += spaceshipDrag;
     }
     if (spaceship.yrate > 0) {
       spaceship.yrate = 0;
-    } else if (spaceship.yrate < -10) {
-      spaceship.yrate = -10;
+    } else if (spaceship.yrate < -spaceshipMaxSpeed) {
+      spaceship.yrate = -spaceshipMaxSpeed;
     }
 
     // Move spaceship
