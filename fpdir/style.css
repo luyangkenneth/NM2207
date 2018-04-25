@@ -61,6 +61,10 @@ body {
   transition: none;
 }
 
+#message.fade > #playAgain {
+  display: none;
+}
+
 #playAgain {
   padding-top: 10px;
   font-size: 24px;
