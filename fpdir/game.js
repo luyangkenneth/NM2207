@@ -152,9 +152,9 @@ const destroyAsteroid = (asteroid) => {
   // Create smaller asteroids
   const center = getCenter(asteroid);
   if (asteroid.size === 'large') {
-    repeat(3, () => createAsteroid('medium', center.x, center.y));
+    repeat(2, () => createAsteroid('medium', center.x, center.y));
   } else if (asteroid.size === 'medium') {
-    repeat(3, () => createAsteroid('small', center.x, center.y));
+    repeat(2, () => createAsteroid('small', center.x, center.y));
   }
 
   // Remove from array
@@ -181,7 +181,7 @@ const fireBullet = () => {
 
   bullets.add(bullet);
 
-  setTimeout(() => expireBullet(bullet), 1500);
+  setTimeout(() => expireBullet(bullet), 1200);
 };
 
 const expireBullet = (bullet) => {
