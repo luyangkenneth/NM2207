@@ -175,7 +175,7 @@ const fireBullet = () => {
   bullet.yrate = bulletSpeed;
 
   bullet.attr({
-    "fill": "#f00",
+    "fill": "#09f",
     "stroke-width": 0,
   });
 
