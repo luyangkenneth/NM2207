@@ -29,8 +29,20 @@ const asteroids = [];
 const asteroidStats = {
   large: {
     radius: 60,
-    minSpeed: 0.5,
-    maxSpeed: 1.2,
+    minSpeed: 0.3,
+    maxSpeed: 0.6,
+  },
+
+  medium: {
+    radius: 40,
+    minSpeed: 0.6,
+    maxSpeed: 1.1,
+  },
+
+  small: {
+    radius: 20,
+    minSpeed: 0.9,
+    maxSpeed: 1.5,
   },
 };
 
@@ -80,6 +92,8 @@ const setup = () => {
 
   for (let i = 0; i < 3; i++) {
     createAsteroid('large');
+    createAsteroid('medium');
+    createAsteroid('small');
   }
 };
 
