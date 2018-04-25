@@ -170,9 +170,10 @@ const fireBullet = () => {
   const spaceshipCenter = getCenter(spaceship);
   const bullet = paper.circle(spaceshipCenter.x, spaceshipCenter.y, bulletRadius);
 
-  // TODO: determine bullet angle based on spaceship rotation, then split into xrate and yrate from there
-  bullet.xrate = bulletSpeed;
-  bullet.yrate = bulletSpeed;
+  // Determine bullet xrate and yrate based on spaceship rotation
+  const rotationRad = Raphael.rad(spaceship.rotation);
+  bullet.xrate = Math.sin(rotationRad) * bulletSpeed;
+  bullet.yrate = -Math.cos(rotationRad) * bulletSpeed;
 
   bullet.attr({
     "fill": "#09f",
