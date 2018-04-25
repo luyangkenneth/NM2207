@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Weekly Progress Update #4: 22 April 2018"
+title:  "Weekly Progress Update #4: Modularizing code"
 date:   2018-04-22 20:06:41 +0800
 ---
 

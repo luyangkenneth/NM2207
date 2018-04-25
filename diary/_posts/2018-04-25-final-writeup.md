@@ -21,7 +21,7 @@ Destroy all the asteroids to win, but watch out for incoming ones!
 All code was written by myself in ES6 from scratch, with no remixing. The only snippets of code I adapted were past assignments on creating and mutating `Raphael` elements. I also referred to the online `Raphael.js` reference, and the Mozilla JavaScript API, which I find more comprehensive than w3schools.
 
 Since I mentioned ES6, I might as well talk about one of its benefits, which is a more concise syntax for anonymous functions:
-```javascript
+```js
 // ES6
 setTimeout(() => expireBullet(bullet), bulletExpiration);
 
@@ -44,7 +44,7 @@ For the record, these were for:
 
 When it came time to implement this, I realized (to my amusement) that I had already thought about it, because of the related question in the final quiz.
 
-```javascript
+```js
 const firingRate = 120;
 let timeLastFired;
 

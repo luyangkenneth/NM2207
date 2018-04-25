@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Weekly Progress Update #2: 8 April 2018"
+title:  "Weekly Progress Update #2: Scoping the project"
 date:   2018-04-08 23:37:46 +0800
 ---
 I will be making [Asteroids][asteroids] for my final project!

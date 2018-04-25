@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Weekly Progress Update #1: 1 April 2018"
+title:  "Weekly Progress Update #1: Brainstorming"
 date:   2018-04-01 22:44:16 +0800
 ---
 As I think about how I should approach this final project, I feel that it will be most fruitful to align the assessment criteria with my own personal goals. My work should ideally expand upon the material covered in class, as well as provide avenues for me to think deeply about presentation and technical design.

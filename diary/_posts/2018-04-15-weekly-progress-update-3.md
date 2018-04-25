@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Weekly Progress Update #3: 15 April 2018"
+title:  "Weekly Progress Update #3: Issues with movement"
 date:   2018-04-15 13:28:12 +0800
 ---
 ### What went well: Spaceship movement
