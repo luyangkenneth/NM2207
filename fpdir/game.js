@@ -129,6 +129,13 @@ const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
   asteroids.push(asteroid);
 };
 
+const destroyAsteroid = (asteroid) => {
+  asteroid.remove();
+
+  const index = asteroids.indexOf(asteroid);
+  asteroids.splice(index, 1);
+};
+
 const loop = () => {
   // Rotate spaceship
   let rotateAmount = 0;
