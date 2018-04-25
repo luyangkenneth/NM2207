@@ -24,6 +24,7 @@ const keys = {
 };
 
 let spaceship;
+const asteroids = [];
 
 //////////////////////////////////////////////////
 
@@ -68,6 +69,10 @@ const setup = () => {
   });
 
   createSpaceship();
+
+  for (let i = 0; i < 3; i++) {
+    createAsteroid();
+  }
 };
 
 const createSpaceship = () => {
@@ -80,6 +85,20 @@ const createSpaceship = () => {
   spaceship.attr({
     "fill": "90-#ddf:0-#09f:100",
     "stroke-width": 0,
+  });
+};
+
+const createAsteroid = () => {
+  const asteroid = paper.circle(halfWidth, halfHeight, 60);
+  asteroids.push(asteroid);
+
+  asteroid.xrate = randomFlip(randomFloat(0.5, 1.2));
+  asteroid.yrate = randomFlip(randomFloat(0.5, 1.2));
+
+  asteroid.attr({
+    "fill": "#ccc",
+    "stroke": "#333",
+    "stroke-width": 3,
   });
 };
 
@@ -114,6 +133,14 @@ const loop = () => {
 
   // Wrap spaceship if it goes out of screen
   wrap(spaceship);
+
+  //////////
+
+  // Handle asteroids
+  asteroids.forEach((asteroid) => {
+    asteroid.translate(asteroid.xrate, asteroid.yrate);
+    wrap(asteroid);
+  });
 
   //////////
 
