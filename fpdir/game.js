@@ -48,7 +48,7 @@ const asteroidStats = {
   },
 };
 
-const bullets = [];
+const bullets = new Set();
 const bulletRadius = 2;
 const bulletSpeed = 7;
 
@@ -179,19 +179,18 @@ const fireBullet = () => {
     "stroke-width": 0,
   });
 
-  bullets.push(bullet);
+  bullets.add(bullet);
 
   setTimeout(() => expireBullet(bullet), 1500);
 };
 
 const expireBullet = (bullet) => {
-  const index = bullets.indexOf(bullet);
-  if (index < 0) {
+  if (!bullets.has(bullet)) {
     return;
   }
 
-  // Remove from array
-  bullets.splice(index, 1);
+  // Remove from set
+  bullets.delete(bullet);
 
   // Remove from paper
   bullet.remove();
