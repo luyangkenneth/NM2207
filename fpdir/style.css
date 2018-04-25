@@ -48,7 +48,8 @@ body {
   position: absolute;
   height: 200px;
   width: 750px;
-  padding-top: 200px;
+  /*padding-top: 200px;*/
+  padding-top: 150px;
 
   opacity: 1;
   transition: 2s opacity;
