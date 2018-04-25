@@ -2,6 +2,7 @@
 
 const header = document.getElementById('header');
 const main = document.getElementById('main');
+const message = document.getElementById('message');
 
 const paper = new Raphael(main);
 const pWidth = paper.width;
@@ -66,6 +67,12 @@ const bulletSpeed = 10;
 const bulletExpiration = 900;
 const firingRate = 120;
 let timeLastFired;
+
+let gameOver = false;
+
+const showGameOverMessage = () => {
+  message.classList.remove('fade');
+};
 
 //////////////////////////////////////////////////
 
@@ -268,7 +275,10 @@ const loop = () => {
       destroySpaceship();
       destroyAsteroid(asteroid);
 
-      // TODO: display game over message
+      if (!gameOver) {
+        gameOver = true;
+        setTimeout(showGameOverMessage, 1000);
+      }
     }
   });
 
