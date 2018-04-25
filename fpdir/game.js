@@ -3,6 +3,7 @@
 const header = document.getElementById('header');
 const main = document.getElementById('main');
 const message = document.getElementById('message');
+const messageText = document.getElementById('messageText');
 
 const paper = new Raphael(main);
 const pWidth = paper.width;
@@ -284,7 +285,7 @@ const loop = () => {
 
   if (!gameOver && asteroids.length == 0) {
     gameOver = true;
-    message.innerText = "YOU WIN";
+    messageText.innerText = "YOU WIN";
     setTimeout(showGameOverMessage, 2000);
   }
 

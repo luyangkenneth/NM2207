@@ -42,7 +42,7 @@ body {
 
 #message {
   font-size: 56px;
-  color: white;
+  color: #fff;
   text-align: center;
 
   position: absolute;
@@ -57,4 +57,13 @@ body {
 #message.fade {
   opacity: 0;
   transition: none;
+}
+
+#playAgain {
+  padding-top: 10px;
+  font-size: 24px;
+}
+
+#playAgain:hover {
+  color: #ccc;
 }
