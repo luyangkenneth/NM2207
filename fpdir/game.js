@@ -71,8 +71,6 @@ const setup = () => {
 const createSpaceship = () => {
   spaceship = paper.ellipse(halfWidth, halfHeight, 12, 16);
 
-  spaceship.xpos = halfWidth;
-  spaceship.ypos = halfHeight;
   spaceship.xrate = 0;
   spaceship.yrate = 0;
   spaceship.rotation = 0;
@@ -113,12 +111,7 @@ const loop = () => {
   }
 
   // Move spaceship
-  spaceship.xpos += spaceship.xrate;
-  spaceship.ypos += spaceship.yrate;
-  spaceship.attr({
-    cx: spaceship.xpos,
-    cy: spaceship.ypos,
-  });
+  spaceship.translate(spaceship.xrate, spaceship.yrate);
 
   // Wrap spaceship if it goes out of screen
   wrap(spaceship);
