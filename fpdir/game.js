@@ -110,11 +110,13 @@ const createSpaceship = () => {
   });
 };
 
-const createAsteroid = (size) => {
+const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
   const stats = asteroidStats[size];
-  const asteroid = paper.circle(halfWidth, halfHeight, stats.radius);
-  asteroids.push(asteroid);
 
+  // TODO: don't spawn at center
+  const asteroid = paper.circle(x, y, stats.radius);
+
+  // TODO: randomize an angle, then split into xrate and yrate from there
   asteroid.xrate = randomFlip(randomFloat(stats.minSpeed, stats.maxSpeed));
   asteroid.yrate = randomFlip(randomFloat(stats.minSpeed, stats.maxSpeed));
 
@@ -123,6 +125,8 @@ const createAsteroid = (size) => {
     "stroke": "#333",
     "stroke-width": 3,
   });
+
+  asteroids.push(asteroid);
 };
 
 const loop = () => {
