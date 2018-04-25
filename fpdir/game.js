@@ -138,9 +138,9 @@ const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
   asteroid.size = size;
 
   asteroid.attr({
-    "fill": "#ccc",
+    "fill": "60-#bbd:0-#999:100",
     "stroke": "#333",
-    "stroke-width": 3,
+    "stroke-width": 2,
   });
 
   asteroids.push(asteroid);
