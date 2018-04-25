@@ -115,6 +115,7 @@ const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
   // TODO: randomize an angle, then split into xrate and yrate from there
   asteroid.xrate = randomFlip(randomFloat(stats.minSpeed, stats.maxSpeed));
   asteroid.yrate = randomFlip(randomFloat(stats.minSpeed, stats.maxSpeed));
+  asteroid.size = size;
 
   asteroid.attr({
     "fill": "#ccc",
@@ -123,13 +124,24 @@ const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
   });
 
   asteroids.push(asteroid);
+
+  // TODO: remove this
+  asteroid.addEventListener('click', () => {
+    destroyAsteroid(asteroid);
+  });
 };
 
 const destroyAsteroid = (asteroid) => {
-  asteroid.remove();
+  if (asteroid.size === 'large') {
+    repeat(3, () => createAsteroid('medium'));
+  } else if (asteroid.size === 'medium') {
+    repeat(3, () => createAsteroid('small'));
+  }
 
   const index = asteroids.indexOf(asteroid);
   asteroids.splice(index, 1);
+
+  asteroid.remove();
 };
 
 const loop = () => {
