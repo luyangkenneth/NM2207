@@ -51,6 +51,7 @@ const asteroidStats = {
 const bullets = new Set();
 const bulletRadius = 2;
 const bulletSpeed = 7;
+let timeLastFired;
 
 //////////////////////////////////////////////////
 
@@ -167,6 +168,11 @@ const destroyAsteroid = (asteroid) => {
 };
 
 const fireBullet = () => {
+  if (timeLastFired !== undefined && Date.now() - timeLastFired < 200) {
+    return;
+  }
+  timeLastFired = Date.now();
+
   const spaceshipCenter = getCenter(spaceship);
   const bullet = paper.circle(spaceshipCenter.x, spaceshipCenter.y, bulletRadius);
 
