@@ -156,11 +156,6 @@ const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
   });
 
   asteroids.push(asteroid);
-
-  // TODO: remove this
-  asteroid.addEventListener('click', () => {
-    destroyAsteroid(asteroid);
-  });
 };
 
 const destroyAsteroid = (asteroid) => {
