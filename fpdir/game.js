@@ -120,7 +120,30 @@ const loop = () => {
     cy: spaceship.ypos,
   });
 
+  // Wrap spaceship if it goes out of screen
+  wrap(spaceship);
+
   //////////
 
   setTimeout(loop, 10);
+};
+
+const wrap = (obj) => {
+  const bbox = obj.getBBox();
+  const objWidth = bbox.x2 - bbox.x;
+  const objHeight = bbox.y2 - bbox.y;
+
+  // left and right edges
+  if (bbox.x2 < 0) {
+    obj.translate(0, objWidth);
+  } else if (bbox.x > pWidth) {
+    obj.translate(0, objWidth);
+  }
+
+  // top and bottom edges
+  if (bbox.y2 < 0) {
+    obj.translate(0, objHeight);
+  } else if (bbox.y > pHeight) {
+    obj.translate(0, objHeight);
+  }
 };
