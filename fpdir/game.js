@@ -48,6 +48,8 @@ const asteroidStats = {
   },
 };
 
+const bullets = [];
+
 //////////////////////////////////////////////////
 
 const run = () => {
@@ -87,6 +89,12 @@ const setup = () => {
       case 'ArrowRight':
         keys.right = false;
         break;
+    }
+  });
+
+  window.addEventListener('keypress', (event) => {
+    if (event.key === 'f') {
+      fireBullet();
     }
   });
 
@@ -149,6 +157,16 @@ const destroyAsteroid = (asteroid) => {
   // TODO: add animation and sound for destruction
 };
 
+const fireBullet = () => {
+  // TODO: setTimeout for bullet expiration
+};
+
+const expireBullet = () => {
+  // TODO
+};
+
+//////////////////////////////////////////////////
+
 const loop = () => {
   // Rotate spaceship
   let rotateAmount = 0;
@@ -193,12 +211,17 @@ const loop = () => {
       // TODO: spaceship should be destroyed
       destroyAsteroid(asteroid);
     }
+
+    // Check collision with bullets
+    // TODO
   });
 
   //////////
 
   setTimeout(loop, 10);
 };
+
+//////////////////////////////////////////////////
 
 const wrap = (obj) => {
   const bbox = obj.getBBox();
