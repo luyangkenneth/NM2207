@@ -199,36 +199,38 @@ const expireBullet = (bullet) => {
 //////////////////////////////////////////////////
 
 const loop = () => {
-  // Rotate spaceship
-  let rotateAmount = 0;
-  if (keys.right) {
-    rotateAmount = 3;
-  } else if (keys.left) {
-    rotateAmount = -3;
-  }
-  spaceship.rotation += rotateAmount + 360
-  spaceship.rotation %= 360;
-  spaceship.rotate(rotateAmount);
+  if (!spaceship.removed) {
+    // Rotate spaceship
+    let rotateAmount = 0;
+    if (keys.right) {
+      rotateAmount = 3;
+    } else if (keys.left) {
+      rotateAmount = -3;
+    }
+    spaceship.rotation += rotateAmount + 360
+    spaceship.rotation %= 360;
+    spaceship.rotate(rotateAmount);
 
-  // Set velocity
-  if (keys.up) {
-    spaceship.yrate -= 0.2;
-  } else if (keys.down) {
-    spaceship.yrate += 0.15;
-  } else {
-    spaceship.yrate += 0.03;
-  }
-  if (spaceship.yrate > 0) {
-    spaceship.yrate = 0;
-  } else if (spaceship.yrate < -10) {
-    spaceship.yrate = -10;
-  }
+    // Set velocity
+    if (keys.up) {
+      spaceship.yrate -= 0.2;
+    } else if (keys.down) {
+      spaceship.yrate += 0.15;
+    } else {
+      spaceship.yrate += 0.03;
+    }
+    if (spaceship.yrate > 0) {
+      spaceship.yrate = 0;
+    } else if (spaceship.yrate < -10) {
+      spaceship.yrate = -10;
+    }
 
-  // Move spaceship
-  spaceship.translate(spaceship.xrate, spaceship.yrate);
+    // Move spaceship
+    spaceship.translate(spaceship.xrate, spaceship.yrate);
 
-  // Wrap spaceship if it goes out of screen
-  wrap(spaceship);
+    // Wrap spaceship if it goes out of screen
+    wrap(spaceship);
+  }
 
   //////////
 
@@ -239,9 +241,11 @@ const loop = () => {
 
     // Check collision with spaceship
     const asteroidRadius = asteroidStats[asteroid.size].radius;
-    if (checkCollision(spaceship, spaceshipLength, asteroid, asteroidRadius)) {
-      // TODO: spaceship should be destroyed
+    if (!spaceship.removed && checkCollision(spaceship, spaceshipLength, asteroid, asteroidRadius)) {
+      spaceship.remove();
       destroyAsteroid(asteroid);
+
+      // TODO: display game over message
     }
   });
 
