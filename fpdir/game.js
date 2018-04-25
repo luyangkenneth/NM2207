@@ -23,6 +23,8 @@ const keys = {
   right: false,
 };
 
+const spaceshipLength = 16;
+const spaceshipWidth = 12;
 let spaceship;
 
 const asteroids = [];
@@ -94,7 +96,7 @@ const setup = () => {
 };
 
 const createSpaceship = () => {
-  spaceship = paper.ellipse(halfWidth, halfHeight, 12, 16);
+  spaceship = paper.ellipse(40, pHeight - 40, spaceshipWidth, spaceshipLength);
 
   spaceship.xrate = 0;
   spaceship.yrate = 0;
@@ -143,6 +145,8 @@ const destroyAsteroid = (asteroid) => {
   asteroids.splice(index, 1);
 
   asteroid.remove();
+
+  // TODO: add animation and sound for destruction
 };
 
 const loop = () => {
@@ -183,6 +187,12 @@ const loop = () => {
   asteroids.forEach((asteroid) => {
     asteroid.translate(asteroid.xrate, asteroid.yrate);
     wrap(asteroid);
+
+    // Check collision with spaceship
+    if (checkCollision(spaceship, spaceshipLength, asteroid, asteroidStats[asteroid.size].radius)) {
+      // TODO: spaceship should be destroyed
+      destroyAsteroid(asteroid);
+    }
   });
 
   //////////
@@ -239,4 +249,11 @@ const getCenter = (obj) => {
     x: bbox.x + objWidth / 2,
     y: bbox.y + objHeight / 2,
   };
+};
+
+const checkCollision = (a, aRadius, b, bRadius) => {
+  const aCenter = getCenter(a);
+  const bCenter = getCenter(b);
+  const distance = getDistance(aCenter.x, aCenter.y, bCenter.x, bCenter.y,);
+  return distance <= aRadius + bRadius;
 };
