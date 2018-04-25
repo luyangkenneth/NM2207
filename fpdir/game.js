@@ -181,6 +181,8 @@ const fireBullet = () => {
 
   bullets.add(bullet);
 
+  // TODO: add sound for firing
+
   setTimeout(() => expireBullet(bullet), 1200);
 };
 
@@ -270,6 +272,7 @@ const loop = () => {
 
   //////////
 
+  // TODO: extract this into variable, proportionate to all movement rates
   setTimeout(loop, 10);
 };
 
