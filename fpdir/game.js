@@ -90,11 +90,7 @@ const setup = () => {
 
   createSpaceship();
 
-  for (let i = 0; i < 3; i++) {
-    createAsteroid('large');
-    createAsteroid('medium');
-    createAsteroid('small');
-  }
+  repeat(3, () => createAsteroid('large'));
 };
 
 const createSpaceship = () => {

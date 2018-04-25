@@ -17,3 +17,10 @@ const randomFlip = (num) => {
   }
   return num;
 };
+
+// Execute a function N times
+const repeat = (N, func) => {
+  for (let i = 0; i < N; i++) {
+    func();
+  }
+};
