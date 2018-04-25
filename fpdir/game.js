@@ -23,8 +23,10 @@ const keys = {
   right: false,
 };
 
+const soundsPath = 'assets/sounds/';
 const sounds = {
-  laser: "assets/sounds/laser.wav",
+  laser: soundsPath + 'laser.wav',
+  explosion: soundsPath + 'explosion.wav',
 };
 
 let spaceship;
@@ -175,7 +177,7 @@ const destroyAsteroid = (asteroid) => {
   // Remove from paper
   asteroid.remove();
 
-  // TODO: add animation and sound for destruction
+  new Audio(sounds.explosion).play();
 };
 
 const fireBullet = () => {
