@@ -286,7 +286,7 @@ const loop = () => {
   if (!gameOver && asteroids.length == 0) {
     gameOver = true;
     messageText.innerText = "YOU WIN";
-    setTimeout(showGameOverMessage, 2000);
+    setTimeout(showGameOverMessage, 1500);
   }
 
   //////////
