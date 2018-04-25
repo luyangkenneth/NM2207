@@ -80,4 +80,6 @@ There were some low-hanging fruit which I decided to implement to improve the ga
 
 - Random starting positions for the asteroids
 
+- Proper screen wrapping for the spaceship
+
 - Enemy spaceships (originally scoped out as a stretch goal)
