@@ -282,6 +282,12 @@ const loop = () => {
     }
   });
 
+  if (!gameOver && asteroids.length == 0) {
+    gameOver = true;
+    message.innerText = "YOU WIN";
+    setTimeout(showGameOverMessage, 2000);
+  }
+
   //////////
 
   // Handle bullets
