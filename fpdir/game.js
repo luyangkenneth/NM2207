@@ -181,7 +181,7 @@ const fireBullet = () => {
 
   bullets.push(bullet);
 
-  // TODO: setTimeout for bullet expiration
+  setTimeout(() => expireBullet(bullet), 1500);
 };
 
 const expireBullet = (bullet) => {
