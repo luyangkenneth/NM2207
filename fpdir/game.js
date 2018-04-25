@@ -69,7 +69,7 @@ const setup = () => {
 };
 
 const createSpaceship = () => {
-  spaceship = paper.ellipse(halfWidth, halfHeight, 15, 20);
+  spaceship = paper.ellipse(halfWidth, halfHeight, 12, 16);
 
   spaceship.xpos = halfWidth;
   spaceship.ypos = halfHeight;
@@ -108,6 +108,8 @@ const loop = () => {
   }
   if (spaceship.yrate > 0) {
     spaceship.yrate = 0;
+  } else if (spaceship.yrate < -10) {
+    spaceship.yrate = -10;
   }
 
   // Move spaceship
