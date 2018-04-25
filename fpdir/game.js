@@ -109,7 +109,7 @@ const createSpaceship = () => {
 const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
   const stats = asteroidStats[size];
 
-  // TODO: don't spawn at center
+  // TODO: don't spawn the large asteroids at center of paper at the beginning
   const asteroid = paper.circle(x, y, stats.radius);
 
   // TODO: randomize an angle, then split into xrate and yrate from there
@@ -132,10 +132,11 @@ const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
 };
 
 const destroyAsteroid = (asteroid) => {
+  const center = getCenter(asteroid);
   if (asteroid.size === 'large') {
-    repeat(3, () => createAsteroid('medium'));
+    repeat(3, () => createAsteroid('medium', center.x, center.y));
   } else if (asteroid.size === 'medium') {
-    repeat(3, () => createAsteroid('small'));
+    repeat(3, () => createAsteroid('small', center.x, center.y));
   }
 
   const index = asteroids.indexOf(asteroid);
@@ -227,4 +228,15 @@ const wrap = (obj) => {
   } else if (bbox.y > pHeight) {
     obj.translate(0, objHeight);
   }
+};
+
+const getCenter = (obj) => {
+  const bbox = obj.getBBox();
+  const objWidth = bbox.x2 - bbox.x;
+  const objHeight = bbox.y2 - bbox.y;
+
+  return {
+    x: bbox.x + objWidth / 2,
+    y: bbox.y + objHeight / 2,
+  };
 };
