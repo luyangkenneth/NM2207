@@ -27,6 +27,7 @@ const soundsPath = 'assets/sounds/';
 const sounds = {
   laser: soundsPath + 'laser.wav',
   explosion: soundsPath + 'explosion.wav',
+  crash: soundsPath + 'crash.wav',
 };
 
 let spaceship;
@@ -130,6 +131,11 @@ const createSpaceship = () => {
     "fill": "90-#ddf:0-#09f:100",
     "stroke-width": 0,
   });
+};
+
+const destroySpaceship = () => {
+  spaceship.remove();
+  new Audio(sounds.crash).play();
 };
 
 const createAsteroid = (size, x = halfWidth, y = halfHeight) => {
@@ -264,7 +270,7 @@ const loop = () => {
     // Check collision with spaceship
     const asteroidRadius = asteroidStats[asteroid.size].radius;
     if (!spaceship.removed && checkCollision(spaceship, spaceshipLength, asteroid, asteroidRadius)) {
-      spaceship.remove();
+      destroySpaceship();
       destroyAsteroid(asteroid);
 
       // TODO: display game over message
